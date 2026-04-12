@@ -3,25 +3,22 @@
 
 # include "push_swap.h"
 
-/* metrics.c */
-float	calculate_disorder(t_stack *a);
-void	set_nodes_index(t_stack *a); /* Indexa de 0 a N para facilitar algoritmos */
+void	assign_index(t_stack *stack);
+float	compute_disorder(t_stack *stack);
+void	update_positions(t_stack *stack);
+void	set_target_positions(t_stack *a, t_stack *b);
 
-/* router.c (o dentro de main.c) */
-void	select_strategy(t_stack **a, t_stack **b);
+void	compute_costs(t_stack *a, t_stack *b);
+void	calc_cost_a(t_node *node, int len_a);
+void	calc_cost_b(t_node *node, int len_b);
+t_node	*get_cheapest(t_stack *stack);
 
-/* algo_simple.c (O(n^2) - Fallback para <= 5 elementos) */
-void	sort_three(t_stack **a);
-void	sort_five(t_stack **a, t_stack **b);
+/* Módulo 1: Adaptive Router (El Main del Módulo) */
+void	select_strategy(t_stack *a, t_stack *b);
 
-/* algo_medium.c (O(n*sqrt(n)) - Chunking) */
-void	sort_chunks(t_stack **a, t_stack **b);
-
-/* algo_complex.c (O(n log n) - Radix o Turk Algorithm) */
-void	sort_complex(t_stack **a, t_stack **b);
-
-/* costs.c (Optimización y cálculo de heurísticas) */
-void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_name);
-void	calculate_costs(t_stack *a, t_stack *b);
+/* Módulo 3 y 4: Las Estrategias */
+void	algo_simple(t_stack *a, t_stack *b);     /* small_sort (<= 5) */
+void	algo_medium(t_stack *a, t_stack *b);     /* chunk_sort (O(n√n)) */
+void	algo_complex(t_stack *a, t_stack *b);    /* Radix / Turk_greedy */
 
 #endif

@@ -5,33 +5,53 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
-# include "../libft/libft.h"
 
+/* ========================================================================== */
+/* 📦 DATA STRUCTURES DESIGN                                                  */
+/* ========================================================================== */
+
+/* Nodo individual: Contiene los datos, metadatos del algoritmo y punteros */
+typedef struct s_node
+{
+	int				value;			/* Valor numérico real */
+	int				index;			/* Valor normalizado (0 a N-1) para Radix */
+	int				pos;			/* Posición actual en el stack */
+	int				target_pos;		/* Posición ideal en el stack opuesto */
+	int				cost_a;			/* Rotaciones necesarias en A */
+	int				cost_b;			/* Rotaciones necesarias en B */
+	int				total_cost;		/* Coste absoluto combinado */
+	bool			above_median;	/* Flag: ¿Está en la mitad superior? */
+	struct s_node	*next;
+	struct s_node	*prev;
+}	t_node;
+
+/* Contenedor del Stack: Maneja la lista de forma global (Optimización O(1)) */
 typedef struct s_stack
 {
-	int				value;			/* El valor real del número */
-	int				index;			/* Posición ideal en el stack ordenado (útil para Radix) */
-	int				push_cost;		/* Coste de mover este nodo (para estrategias complejas) */
-	bool			above_median;	/* Flag de optimización para saber qué dirección rotar */
-	struct s_stack	*target_node;	/* Puntero al nodo objetivo en el otro stack */
-	struct s_stack	*next;			/* Siguiente nodo */
-	struct s_stack	*prev;			/* Nodo anterior (Lista Doblemente Enlazada) */
+	t_node			*top;			/* Puntero al primer nodo */
+	t_node			*bottom;		/* Puntero al último nodo (optimiza rra/rrb) */
+	int				size;			/* Tamaño actual del stack */
 }	t_stack;
 
-bool	check_syntax(char *str_n);
-bool	check_duplicates(t_stack *a, int n);
-void	parse_input(t_stack **a, char **argv, bool is_split);
-int	check_args(int argc, char **argv);
+/* ========================================================================== */
+/* 🛠️ SETUP & INFRASTRUCTURE (src/setup/)                                    */
+/* ========================================================================== */
 
-void	append_node(t_stack **stack, int n);
-t_stack	*find_last(t_stack *stack);
-t_stack	*find_smallest(t_stack *stack);
-t_stack	*find_highest(t_stack *stack);
-int		stack_len(t_stack *stack);
+/* parsing.c */
+int		check_args(int argc, char **argv);
+
+/* flags.c */
+bool	parse_flags(int argc, char **argv, bool *bench_mode);
+
+/* stack_utils.c (Stack API Design) */
+void	init_stacks(t_stack *a, t_stack *b);
+void	populate_stack_a(t_stack *a, char **argv);
+void	push_node(t_stack *stack, t_node *new_node);
+t_node	*pop_node(t_stack *stack);
 bool	is_sorted(t_stack *stack);
 
-void	free_stack(t_stack **stack);
-void	free_matrix(char **matrix);
-void	error_exit(t_stack **a, char **matrix, bool is_split);
+/* memory.c */
+void	free_stack(t_stack *stack);
+void	error_exit(t_stack *a, t_stack *b);
 
 #endif
