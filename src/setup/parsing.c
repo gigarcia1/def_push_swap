@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-/* Convierte el string actual a long. Se detiene al encontrar un espacio */
+/* 1. Convierte el string a long */
 static long	ft_atol(const char *str)
 {
 	long	result;
@@ -22,18 +22,31 @@ static long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-/* Verifica si la palabra a la que apunta el puntero empieza como numero */
+/*
+* @brief evalua signos, digitos y super overflow
+* @param string de argv
+* @return int 0 en error 1 en exito
+*/
 static int	is_valid_number(char *str)
 {
+	int	len;
+
+	len = 0;
 	if (*str == '-' || *str == '+')
 		str++;
 	if (*str < '0' || *str > '9')
 		return (0);
+	while (*str == '0')
+		str++;
+	while (str[len] >= '0' && str[len] <= '9')
+		len++;
+	if (len > 10)
+		return (0);
 	return (1);
 }
 
-/* Magia de punteros: Escanea todos los argv anteriores y el string actual
-   justo hasta la posicion de nuestro puntero (cur_ptr) para buscar duplicados */
+/* 3. Búsqueda de duplicados sin gastar memoria */
+
 static int	has_duplicate(char **argv, int cur_arg, char *cur_ptr, long val)
 {
 	int		i;
@@ -61,15 +74,15 @@ static int	has_duplicate(char **argv, int cur_arg, char *cur_ptr, long val)
 	return (0);
 }
 
-/* Procesa un solo string de argv, saltando espacios y validando cada bloque */
+/* 4. Procesa string: Retorna -1 si hay error, o la CANTIDAD de números que halló */
 static int	process_string(char **argv, int i)
 {
 	char	*ptr;
 	long	val;
-	int		has_num;
+	int		count;
 
 	ptr = argv[i];
-	has_num = 0;
+	count = 0;
 	while (*ptr)
 	{
 		while (*ptr == ' ')
@@ -77,36 +90,41 @@ static int	process_string(char **argv, int i)
 		if (!*ptr)
 			break ;
 		if (!is_valid_number(ptr))
-			return (0);
+			return (-1);
 		val = ft_atol(ptr);
 		if (val > 2147483647 || val < -2147483648)
-			return (0);
+			return (-1);
 		if (has_duplicate(argv, i, ptr, val))
-			return (0);
-		has_num = 1;
+			return (-1);
+		count++;
 		if (*ptr == '-' || *ptr == '+')
 			ptr++;
 		while (*ptr >= '0' && *ptr <= '9')
 			ptr++;
 		if (*ptr != ' ' && *ptr != '\0')
-			return (0);
+			return (-1);
 	}
-	return (has_num);
+	return (count);
 }
 
-/* Funcion principal (exportada en push_swap.h) */
+/* 5. Función principal: Falla rápido (-1) o devuelve la cantidad total exacta */
 int	check_args(int argc, char **argv)
 {
 	int	i;
+	int	total_numbers;
+	int	current_count;
 
 	if (argc < 2)
 		return (0);
 	i = 1;
+	total_numbers = 0;
 	while (i < argc)
 	{
-		if (!process_string(argv, i))
-			return (0);
+		current_count = process_string(argv, i);
+		if (current_count == -1)
+			return (-1);
+		total_numbers += current_count;
 		i++;
 	}
-	return (1);
+	return (total_numbers);
 }
