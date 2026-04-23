@@ -32,6 +32,8 @@ t_node	*get_cheapest(t_stack *stack);
 void	select_strategy(t_stack *a, t_stack *b);
 
 /* Módulo 3 y 4: Las Estrategias */
+
+void	push_chunk_to_b(t_stack *a, t_stack *b);
 void	simple(t_stack *a, t_stack *b);     /* small_sort (<= 5) */
 void	medium(t_stack *a, t_stack *b);     /* chunk_sort (O(n√n)) */
 void	complex(t_stack *a, t_stack *b);    /* Radix / Turk_greedy */

@@ -114,8 +114,6 @@ int	check_args(int argc, char **argv)
 	int	total_numbers;
 	int	current_count;
 
-	if (argc < 2)
-		return (0);
 	i = 1;
 	total_numbers = 0;
 	while (i < argc)
