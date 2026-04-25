@@ -111,7 +111,7 @@ static int	process_string(char **argv, int i)
 			ptr++;
 		while (ft_isdigit(*ptr))
 			ptr++;
-		if (ft_isspace(*ptr) && *ptr != '\0')
+		if (!ft_isspace(*ptr) && *ptr != '\0')
 			return (-1);
 	}
 	return (count);

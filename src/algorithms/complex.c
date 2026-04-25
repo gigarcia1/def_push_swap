@@ -24,7 +24,7 @@ static void move_a_to_b(t_stack *a, t_stack *b, t_node *cheapest)
 	if (!a || !b || !cheapest)
 		return ;
 	target_node = get_target_node(b, cheapest->target_pos);
-	if (cheapest->pos <= a->size / 2 && target_node->pos <= b->size / 2)
+	if (cheapest->above_median == true && target_node->above_median == true)
 	{
 		while (a->top != cheapest && b->top != target_node)
 			rr(a, b, false);
@@ -104,6 +104,8 @@ void complex(t_stack *a, t_stack *b)
 	find_node_by_size(a);
 	find_node_by_size(b);
 	update_positions(a);
+	// sin comprobar mitad: 245
+	//comprobando: 209 
 	while (a->smallest != a->top)
 	{
 		if (a->smallest->above_median == true)
