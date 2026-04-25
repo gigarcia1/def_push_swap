@@ -1,37 +1,5 @@
 #include "push_swap.h"
 
-int	ft_issign(char c)
-{
-	return (c == '+' || c == '-');
-}
-
-int	ft_isspace(char c)
-{
-	return (c == ' ' || (c >= 9 && c <= 13));
-}
-
-/* 1. Convierte el string a long */
-static long	ft_atol(const char *str)
-{
-	long	result;
-	int		sign;
-
-	result = 0;
-	sign = 1;
-	if (ft_issign(*str))
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (ft_isdigit(*str))
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
-	return (result * sign);
-}
-
 /*
 * @brief evalua signos, digitos y super overflow
 * @param string de argv
