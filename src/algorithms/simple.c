@@ -6,11 +6,13 @@
 /*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 15:09:56 by gigarcia          #+#    #+#             */
-/*   Updated: 2026/04/26 15:11:59 by gigarcia         ###   ########.fr       */
+/*   Updated: 2026/04/26 17:56:19 by gigarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "algorithms.h"
+#include "instructions.h"
 
 void	update_positions(t_stack *stack)
 {

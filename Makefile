@@ -24,12 +24,14 @@ SRC_FILES   = main.c \
               setup/parsing.c \
               setup/flags.c \
               setup/stack_utils.c \
+              setup/stack_init.c \
               setup/memory.c \
               operations/push.c \
               operations/swap.c \
               operations/rotate.c \
               operations/rev_rotate.c \
               operations/output.c \
+              operations/output_bench.c \
               algorithms/metrics.c \
               algorithms/simple.c \
               algorithms/medium.c \

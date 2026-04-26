@@ -6,11 +6,13 @@
 /*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 15:12:44 by gigarcia          #+#    #+#             */
-/*   Updated: 2026/04/26 15:15:50 by gigarcia         ###   ########.fr       */
+/*   Updated: 2026/04/26 17:54:46 by gigarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "algorithms.h"
+#include "instructions.h"
 
 static int	get_node_pos(t_stack *stack, int target_index)
 {

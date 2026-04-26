@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/26 17:08:55 by gigarcia          #+#    #+#             */
+/*   Updated: 2026/04/26 17:51:54 by gigarcia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "instructions.h"
 
@@ -22,10 +34,8 @@ void	sb(t_stack *b, bool silent)
 
 	if (!b || b->size < 2)
 		return ;
-		
 	top = pop_node_top(b);
 	second = pop_node_top(b);
-	
 	push_node(b, top);
 	push_node(b, second);
 	print_instruction("sb\n", silent);

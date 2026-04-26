@@ -6,11 +6,13 @@
 /*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 15:31:06 by gigarcia          #+#    #+#             */
-/*   Updated: 2026/04/26 15:31:19 by gigarcia         ###   ########.fr       */
+/*   Updated: 2026/04/26 17:54:30 by gigarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "algorithms.h"
+#include "instructions.h"
 
 int	get_median(t_node *top, int len)
 {

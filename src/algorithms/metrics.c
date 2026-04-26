@@ -6,11 +6,13 @@
 /*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 15:16:38 by gigarcia          #+#    #+#             */
-/*   Updated: 2026/04/26 15:16:59 by gigarcia         ###   ########.fr       */
+/*   Updated: 2026/04/26 17:55:14 by gigarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "algorithms.h"
+#include "instructions.h"
 
 bool	is_sorted(t_stack *stack)
 {

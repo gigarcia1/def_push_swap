@@ -6,11 +6,13 @@
 /*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 15:44:57 by gigarcia          #+#    #+#             */
-/*   Updated: 2026/04/26 15:45:10 by gigarcia         ###   ########.fr       */
+/*   Updated: 2026/04/26 17:54:14 by gigarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "algorithms.h"
+#include "instructions.h"
 
 static void	partition_a(t_stack *a, t_stack *b, int len, t_counts *cnt)
 {

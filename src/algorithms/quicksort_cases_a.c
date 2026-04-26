@@ -6,11 +6,13 @@
 /*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 15:52:39 by gigarcia          #+#    #+#             */
-/*   Updated: 2026/04/26 15:52:57 by gigarcia         ###   ########.fr       */
+/*   Updated: 2026/04/26 17:55:38 by gigarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "algorithms.h"
+#include "instructions.h"
 
 static void	sort_3_a_part2(t_stack *a, int t, int m, int bt)
 {
