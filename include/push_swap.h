@@ -27,10 +27,6 @@ typedef struct s_node
 	int				value;			/* Valor numérico real */
 	int				index;			/* Valor normalizado (0 a N-1) para Radix */
 	int				pos;			/* Posición actual en el stack */
-	int				target_pos;		/* Posición ideal en el stack opuesto */
-	int				cost_a;			/* Rotaciones necesarias en A */
-	int				cost_b;			/* Rotaciones necesarias en B */
-	int				total_cost;		/* Coste absoluto combinado */
 	bool			above_median;	/* Flag: ¿Está en la mitad superior? */
 	struct s_node	*next;
 	struct s_node	*prev;

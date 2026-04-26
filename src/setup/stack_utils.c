@@ -118,10 +118,6 @@ static t_node	*init_node(int val)
 	n->value = val;
 	n->index = 0;
 	n->pos = 0;
-	n->target_pos = 0;
-	n->cost_a = 0;
-	n->cost_b = 0;
-	n->total_cost = 0;
 	n->above_median = false;
 	n->next = NULL;
 	n->prev = NULL;

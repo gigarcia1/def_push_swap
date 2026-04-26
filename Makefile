@@ -34,8 +34,6 @@ SRC_FILES   = main.c \
               algorithms/simple.c \
               algorithms/medium.c \
               algorithms/complex.c \
-              algorithms/costs.c \
-			  algorithms/greedy_metrics.c \
 			  algorithms/quicksort_helpers.c
 
 # Bonus program .c files

@@ -3,7 +3,6 @@
 
 void	quicksort_b(t_stack *a, t_stack *b, int len);
 
-/* Helper para encontrar la mediana de un bloque específico de 'len' tamaño */
 int		get_median(t_node *top, int len)
 {
 	int	*arr;
@@ -27,7 +26,6 @@ int		get_median(t_node *top, int len)
 	return (free(arr), ret);
 }
 
-/* Los motores recursivos */
 void quicksort_a(t_stack *a, t_stack *b, int len)
 {
     int pivot;
@@ -111,7 +109,7 @@ void	quicksort_b(t_stack *a, t_stack *b, int len)
     quicksort_a(a, b, pushed);
     quicksort_b(a, b, len - pushed);
 }
-/* El director que reemplazará a complex() */
+
 void	complex(t_stack *a, t_stack *b)
 {
 	quicksort_a(a, b, a->size);

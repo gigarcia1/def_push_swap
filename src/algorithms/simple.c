@@ -2,6 +2,27 @@
 #include "instructions.h"
 #include "algorithms.h"
 
+void	update_positions(t_stack *stack)
+{
+	t_node	*current;
+	int	i;
+
+	if (!stack)
+		return ;
+	current = stack->top;
+	i = 0;
+	while (current)
+	{
+		current->pos = i;
+		if (current->pos <= stack->size / 2)
+			current->above_median = true;
+		else
+			current->above_median = false;
+		current = current->next;
+		i++;
+	}
+}
+
 static void	sort_three(t_stack *stack)
 {
     find_node_by_size(stack); 
