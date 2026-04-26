@@ -129,19 +129,17 @@ static t_node	*init_node(int val)
 }
 
 /* Lee el argv, extrae numeros saltando espacios y los inyecta en Stack A */
-int	populate_stack_a(t_stack *a, char **argv)
+int	populate_stack_a(t_stack *a, char **argv, int start)
 {
-	int		i;
 	char	*ptr;
 	t_node	*new_node;
 
-	i = 1;
-	while (argv[i])
+	while (argv[start])
 	{
-		ptr = argv[i];
+		ptr = argv[start];
 		while (*ptr)
 		{
-			while (*ptr == ' ')
+			while (ft_isspace(*ptr))
 				ptr++;
 			if (!*ptr)
 				break ;
@@ -149,12 +147,12 @@ int	populate_stack_a(t_stack *a, char **argv)
 			if (!new_node)
 				return (0);
 			append_node(a, new_node);
-			if (*ptr == '-' || *ptr == '+')
+			if (ft_issign(*ptr))
 				ptr++;
-			while (*ptr >= '0' && *ptr <= '9')
+			while (ft_isdigit(*ptr))
 				ptr++;
 		}
-		i++;
+		start++;
 	}
 	return (find_node_by_size(a), 1);
 }

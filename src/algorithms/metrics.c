@@ -110,3 +110,35 @@ void	assign_index(t_stack *stack)
 	set_index(stack, arr);
 	free(arr);
 }
+
+/* * Calcula el nivel de desorden del stack comparando todos los pares posibles.
+ * Retorna un float entre 0.0 (ordenado) y 1.0 (orden inverso absoluto).
+ */
+float	compute_disorder(t_stack *stack)
+{
+	t_node	*curr_i;
+	t_node	*curr_j;
+	int		mistakes;
+	int		total_pairs;
+
+	if (!stack || stack->size < 2)
+		return (0.0f);
+	mistakes = 0;
+	total_pairs = 0;
+	curr_i = stack->top;
+	while (curr_i)
+	{
+		curr_j = curr_i->next;
+		while (curr_j)
+		{
+			total_pairs++;
+			if (curr_i->value > curr_j->value)
+				mistakes++;
+			curr_j = curr_j->next;
+		}
+		curr_i = curr_i->next;
+	}
+	if (total_pairs == 0)
+		return (0.0f);
+	return ((float)mistakes / (float)total_pairs);
+}

@@ -86,21 +86,19 @@ static int	process_string(char **argv, int i)
 }
 
 /* 5. Función principal: Falla rápido (-1) o devuelve la cantidad total exacta */
-int	check_args(int argc, char **argv)
+int	check_args(int argc, char **argv, int start)
 {
-	int	i;
 	int	total_numbers;
 	int	current_count;
 
-	i = 1;
 	total_numbers = 0;
-	while (i < argc)
+	while (start < argc)
 	{
-		current_count = process_string(argv, i);
+		current_count = process_string(argv, start);
 		if (current_count == -1)
 			return (-1);
 		total_numbers += current_count;
-		i++;
+		start++;
 	}
 	return (total_numbers);
 }

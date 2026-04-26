@@ -36,6 +36,36 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
+typedef enum e_strategy
+{
+	STRAT_ADAPTIVE,
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX
+}	t_strategy;
+
+typedef struct s_config
+{
+	t_strategy	strategy;
+	bool		bench_mode;
+	int			arg_start;
+}	t_config;
+
+typedef struct s_inst_counter
+{
+	int	pa;
+	int	pb;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	ra;
+	int	rb;
+	int	rr;
+	int rra;
+	int	rrb;
+	int	rrr;
+} t_inst_counter;
+
 /* Contenedor del Stack: Maneja la lista de forma global (Optimización O(1)) */
 typedef struct s_stack
 {
@@ -44,18 +74,18 @@ typedef struct s_stack
 	t_node			*smallest;		/* Puntero al nodo con el valor mas pequeñito */
 	t_node			*highest;		/* Puntero al nodo con el valor mas grandote*/
 	int				size;			/* Tamaño actual del stack */
+	bool			silent;			/* Si imprime o no imprime */
 }	t_stack;
 
-/* parsing.c */
-int		check_args(int argc, char **argv);
-bool	is_valid_number(char *str);
 
-/* flags.c */
-bool	parse_flags(int argc, char **argv, bool *bench_mode);
+/* Parsing */
+int		check_args(int argc, char **argv, int start);
+int		populate_stack_a(t_stack *a, char **argv, int start);
+
+t_config	parse_flags(int argc, char **argv);
 
 /* stack_utils.c (Stack API Design) */
 void	init_stacks(t_stack *a, t_stack *b);
-int	populate_stack_a(t_stack *a, char **argv);
 void	push_node(t_stack *stack, t_node *new_node);
 t_node	*pop_node_top(t_stack *stack);
 t_node	*pop_node_bottom(t_stack *stack);
