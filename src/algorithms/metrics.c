@@ -40,31 +40,6 @@ void	find_node_by_size(t_stack *stack)
 	stack->smallest = small;
 }
 
-/* Helper: Ordena un array de enteros de menor a mayor (Bubble Sort) */
-void	sort_int_array(int *arr, int size)
-{
-	int	i;
-	int	j;
-	int	temp;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (arr[i] > arr[j])
-			{
-				temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
 void	set_index(t_stack *stack, int *arr)
 {
 	t_node	*curr;
@@ -106,7 +81,7 @@ void	assign_index(t_stack *stack)
 		arr[i++] = curr->value;
 		curr = curr->next;
 	}
-	sort_int_array(arr, stack->size);
+	ft_bubble_sort(arr, stack->size);
 	set_index(stack, arr);
 	free(arr);
 }

@@ -21,7 +21,7 @@ int		get_median(t_node *top, int len)
 		top = top->next;
 		i++;
 	}
-	sort_int_array(arr, len);
+	ft_bubble_sort(arr, len);
 	ret = arr[len / 2];
 	return (free(arr), ret);
 }

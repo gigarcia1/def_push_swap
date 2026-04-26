@@ -37,7 +37,7 @@ typedef enum e_strategy
 	STRAT_ADAPTIVE,
 	STRAT_SIMPLE,
 	STRAT_MEDIUM,
-	STRAT_COMPLEX
+	STRAT_COMPLEX,
 }	t_strategy;
 
 typedef struct s_config

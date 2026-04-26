@@ -1,20 +1,6 @@
 #include "push_swap.h"
 #include "algorithms.h"
 
-/* * Algoritmo O(n) para desorden muy bajo. 
- * Si el desorden es menor al 20%, el stack está "casi" listo.
- */
-static void	low_disorder_sort(t_stack *a, t_stack *b)
-{
-	if (is_sorted(a))
-		return ;
-	/* En un desorden < 0.2, el Turk (complex) es tan eficiente 
-	   que sigue siendo una opción segura, pero el subject pide O(n). 
-	   Una técnica O(n) común es buscar si solo hay un elemento 
-	   fuera de lugar y corregirlo. */
-	complex(a, b); 
-}
-
 t_strategy	select_strategy(t_stack *a, t_stack *b, t_config cfg, float disorder)
 {
 	if (cfg.strategy == STRAT_SIMPLE)
@@ -25,7 +11,7 @@ t_strategy	select_strategy(t_stack *a, t_stack *b, t_config cfg, float disorder)
 		return (complex(a, b), STRAT_COMPLEX);
 	disorder = compute_disorder(a);
 	if (disorder < 0.2)
-		return (low_disorder_sort(a, b), STRAT_SIMPLE);
+		return (simple(a, b), STRAT_SIMPLE);
 	else if (disorder < 0.5)
 		return (medium(a, b), STRAT_MEDIUM);
 	else

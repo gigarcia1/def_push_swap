@@ -19,7 +19,6 @@ typedef struct s_node t_node;
 typedef enum e_strategy t_strategy;
 typedef struct s_config t_config;
 
-void	sort_int_array(int *arr, int size);
 void	assign_index(t_stack *stack);
 float	compute_disorder(t_stack *stack);
 void	update_positions(t_stack *stack);
