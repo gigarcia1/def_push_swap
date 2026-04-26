@@ -6,7 +6,7 @@
 /*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:39:51 by gigarcia          #+#    #+#             */
-/*   Updated: 2026/04/26 17:39:53 by gigarcia         ###   ########.fr       */
+/*   Updated: 2026/04/26 18:20:03 by gigarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ void	rrb(t_stack *b, bool silent);
 void	rrr(t_stack *a, t_stack *b, bool silent);
 void	print_instruction(char *inst, bool silent);
 void	print_bench_stats(float dis, t_strategy ori, t_strategy exe);
+/*BONUS PROTOTYPES*/
+void	execute_instruction(char *line, t_stack *a, t_stack *b);
 
 #endif

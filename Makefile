@@ -42,8 +42,8 @@ SRC_FILES   = main.c \
 
 # Bonus program .c files
 BONUS_FILES = $(filter-out main.c, $(SRC_FILES)) \
-              ../$(BONUS_DIR)/checker_main.c \
-              ../$(BONUS_DIR)/checker_utils.c
+              checker_main.c \
+              checker_utils.c
 
 # Object files
 OBJ_FILES   = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
