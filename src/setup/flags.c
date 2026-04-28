@@ -17,11 +17,20 @@ static void	match_flag(char *arg, t_config *cfg)
 	if (ft_strncmp(arg, "--bench", 8) == 0)
 		cfg->bench_mode = true;
 	else if (ft_strncmp(arg, "--simple", 9) == 0)
+	{
 		cfg->strategy = STRAT_SIMPLE;
+		cfg->forced_strategy = true;
+	}
 	else if (ft_strncmp(arg, "--medium", 9) == 0)
+	{
 		cfg->strategy = STRAT_MEDIUM;
+		cfg->forced_strategy = true;
+	}
 	else if (ft_strncmp(arg, "--complex", 10) == 0)
+	{
 		cfg->strategy = STRAT_COMPLEX;
+		cfg->forced_strategy = true;
+	}
 	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
 		cfg->strategy = STRAT_ADAPTIVE;
 }
@@ -42,6 +51,7 @@ t_config	parse_flags(int argc, char **argv)
 
 	cfg.strategy = STRAT_ADAPTIVE;
 	cfg.bench_mode = false;
+	cfg.forced_strategy = false;
 	i = 1;
 	while (i < argc && argv[i][0] == '-')
 	{

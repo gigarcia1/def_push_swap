@@ -27,7 +27,7 @@ void	rra(t_stack *a, bool silent);
 void	rrb(t_stack *b, bool silent);
 void	rrr(t_stack *a, t_stack *b, bool silent);
 void	print_instruction(char *inst, bool silent);
-void	print_bench_stats(float dis, t_strategy ori, t_strategy exe);
+void	print_bench(float dis, t_strategy ori, t_strategy exe, t_config cfg);
 /*BONUS PROTOTYPES*/
 void	execute_instruction(char *line, t_stack *a, t_stack *b);
 

@@ -41,6 +41,7 @@ typedef struct s_config
 {
 	t_strategy	strategy;
 	bool		bench_mode;
+	bool		forced_strategy;
 	int			arg_start;
 }	t_config;
 

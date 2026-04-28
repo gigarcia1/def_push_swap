@@ -18,7 +18,7 @@ static void	print_stat(char *name, int val)
 	ft_putnbr_fd(val, 2);
 }
 
-static void	print_header(float disorder, t_strategy exec)
+static void	print_header(float disorder, t_strategy exec, t_config cfg)
 {
 	ft_putstr_fd("[bench] disorder: ", 2);
 	ft_putnbr_fd((int)(disorder * 100), 2);
@@ -26,7 +26,9 @@ static void	print_header(float disorder, t_strategy exec)
 	if ((int)(disorder * 10000) % 100 < 10)
 		ft_putstr_fd("0", 2);
 	ft_putnbr_fd((int)(disorder * 10000) % 100, 2);
-	ft_putstr_fd("%\n[bench] strategy: Adaptive / ", 2);
+	ft_putstr_fd("%\n[bench] strategy: ", 2);
+	if (cfg.forced_strategy == false)
+		ft_putstr_fd("Adaptive / ", 2);
 	if (exec == STRAT_SIMPLE)
 		ft_putstr_fd("Simple O(n^2)\n", 2);
 	else if (exec == STRAT_MEDIUM)
@@ -35,13 +37,13 @@ static void	print_header(float disorder, t_strategy exec)
 		ft_putstr_fd("Complex O(n log n)\n", 2);
 }
 
-void	print_bench_stats(float dis, t_strategy orig, t_strategy exec)
+void	print_bench(float dis, t_strategy orig, t_strategy exec, t_config cfg)
 {
 	t_stats	*s;
 
 	(void)orig;
 	s = get_stats();
-	print_header(dis, exec);
+	print_header(dis, exec, cfg);
 	print_stat("[bench] total_ops: ", s->total_ops);
 	print_stat("\n[bench] sa: ", s->sa);
 	print_stat(" sb: ", s->sb);

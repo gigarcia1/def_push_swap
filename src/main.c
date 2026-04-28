@@ -86,7 +86,7 @@ int	main(int ac, char **av)
 	disorder = compute_disorder(&a);
 	exec_strat = select_strategy(&a, &b, cfg, disorder);
 	if (cfg.bench_mode)
-		print_bench_stats(disorder, cfg.strategy, exec_strat);
+		print_bench(disorder, cfg.strategy, exec_strat, cfg);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
