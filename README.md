@@ -35,8 +35,6 @@ quicksort adaptado que actúa como estrategia compleja para entradas con una mé
 .
 ├── Makefile
 ├── README.md
-├── .gitignore
-├── .gitmodules
 ├── include/
 │   ├── algorithms.h
 │   ├── instructions.h
@@ -71,8 +69,7 @@ quicksort adaptado que actúa como estrategia compleja para entradas con una mé
     ├── Makefile
     ├── libft.h
     ├── get_next_line.c
-    ├── get_next_line.h
-    └── [Múltiples archivos fuente ft_*.c ...]
+    └── [Resto de archivos .c pertenecientes a la libft...]
 
 ## Instrucciones
 
@@ -159,37 +156,13 @@ Estrategias y por qué se eligieron (implementadas en `src/algorithms`):
 4) Estrategia "complex", quicksort recursivo (función `complex` — `algorithms/complex.c`)
 - Para: entradas grandes o cuando la heurística (métrica de desorden) lo decide.
 - Cómo (implementación propia style quicksort-partition):
-  - `quicksort_a` y `quicksort_b` hacen particionado por un pivote (mediana calculada
-    sobre la sublista con `get_median` en `algorithms/complex_utils.c`).
-  - En `quicksort_a` se empujan a B los elementos menores que el pivote y se rotan los
-    demás; tras particionar se 'recolocan' (recolocar mediante `rra`/`rrb`) para restaurar el orden relativo, y se recursiona en ambas particiones.
-  - Para segmentos de tamaño ≤ 3 se usan funciones `sort_small_a` / `sort_small_b`
-    que aplican secuencias mínimas específicas.
+  - `quicksort_a` y `quicksort_b` hacen particionado por un pivote (mediana calculada sobre la sublista con `get_median` en `algorithms/complex_utils.c`).
+  - En `quicksort_a` se empujan a B los elementos menores que el pivote y se rotan los demás; tras particionar se 'recolocan' (recolocar mediante `rra`/`rrb`) para restaurar el orden relativo, y se recursiona en ambas particiones.
+  - Para segmentos de tamaño ≤ 3 se usan funciones `sort_small_a` / `sort_small_b` que aplican secuencias mínimas específicas.
 - Este enfoque imita el quicksort adaptado al conjunto limitado de
   operaciones (push/rotate). Reduce la profundidad de recursión de forma eficiente y
   es efectivo en entradas grandes donde chunking puede resultar subóptimo.
 
-Métrica de desorden (compute_disorder) — `algorithms/metrics.c`:
-- Qué hace: calcula un valor en [0.0, 1.0] que representa el porcentaje de pares
-  fuera de orden (inversiones normalizadas).
-- Uso: la métrica sirve para seleccionar una estrategia adaptativa (por ejemplo,
-  usar `simple` si la secuencia está casi ordenada, `medium` para desorden medio y
-  `complex` para casos muy desordenados o grandes).
-
-Decisiones técnicas y trade-offs importantes:
-- Elegir chunk sizes heurísticos simplifica la implementación pero requiere ajuste
-  para datasets concretos. Los valores elegidos (15/35) son típicos en soluciones
-  estudiantiles y equilibran rendimiento en tests de la asignatura.
-- Calcular la mediana con copia y ordenación (get_median) es simple y claro, pero
-  implica O(m log m) por partición; para tamaños grandes se podrían usar selecciones
-  lineales (median-of-medians) si se necesitase optimización extrema.
-- El diseño prioriza claridad y corrección dentro de las restricciones del proyecto
-  (sin librerías externas, cumpliendo la Norm).
-
-Edge cases cubiertos:
-- Entradas ya ordenadas (retorna sin imprimir instrucciones).
-- Un solo elemento o 0 elementos.
-- Detección de duplicados y argumentos no numéricos (parsing en `src/setup/parsing.c`).
 
 ## Recursos
 
@@ -234,5 +207,11 @@ Comprobación de errores:
 - `src/algorithms/medium.c` — chunking / estrategia intermedia.
 - `src/algorithms/complex.c`, `complex_utils.c` — particionado recursivo y mediana.
 - `include/` — estructuras de datos (`t_stack`, `t_node`) y prototipos públicos.
+
+## Recursos
+
+- Documentación oficial del proyecto 42
+- https://en.wikipedia.org/wiki/Quicksort
+- https://en.wikipedia.org/wiki/Radix_sort
 
 
