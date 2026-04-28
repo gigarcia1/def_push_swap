@@ -6,7 +6,7 @@
 /*   By: gigarcia <gigarcia@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:02:42 by gigarcia          #+#    #+#             */
-/*   Updated: 2026/04/26 17:49:57 by gigarcia         ###   ########.fr       */
+/*   Updated: 2026/04/28 14:18:39 by gigarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	init_stacks(t_stack *a, t_stack *b)
 	}
 }
 
-static t_node	*init_node(int val)
+static t_node	*init_node(int val, t_stack *a)
 {
 	t_node	*n;
 
 	n = malloc(sizeof(t_node));
 	if (!n)
-		error_exit(NULL, NULL);
+		error_exit(a, NULL);
 	n->value = val;
 	n->index = 0;
 	n->pos = 0;
@@ -63,7 +63,7 @@ int	populate_stack_a(t_stack *a, char **argv, int start)
 				ptr++;
 			if (!*ptr)
 				break ;
-			new_node = init_node(ft_atoi(ptr));
+			new_node = init_node(ft_atoi(ptr), a);
 			if (!new_node)
 				return (0);
 			append_node(a, new_node);
