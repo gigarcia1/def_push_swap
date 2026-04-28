@@ -160,7 +160,7 @@ Notas de uso:
 - Quick sort: https://en.wikipedia.org/wiki/Quicksort
 - Artículos y hilos de 42 sobre `push_swap` y estrategias de chunking / radix.
 
-Uso de IA / declaración sobre IA
+## Uso de IA
 - Se utilizó asistencia de IA para tareas no críticas al código fuente:
   - Redacción se este README tomando en cuenta las notas de ambos estudiantes.
   - Explicación de las decisiones algorítmicas en lenguaje natural.
