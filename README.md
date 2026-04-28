@@ -122,20 +122,9 @@ Notas de uso:
 - `libft/` : biblioteca de utilidades del autor (se enlaza en el Makefile).
 - `bonus/` : implementaciones del `checker` para la validación (opcional).
 
-## Algoritmos implementados — explicación y justificación
+## Algoritmos implementados
 
-Contrato corto (entradas/salidas):
-- Input: lista de enteros desde argumentos de línea de comandos.
-- Output: secuencia de instrucciones válidas (una por línea) que ordenan la pila A.
-- Error modes: imprime "Error\n" y sale para entradas inválidas (no numéricas, duplicados, overflow).
-
-Estrategias y por qué se eligieron (implementadas en `src/algorithms`):
-
-1) Normalización de índices (assign_index)
-- Qué hace: mapea los valores originales a índices 0..n-1 preservando orden relativo.
-- Justificación: reduce la dependencia del rango de valores y facilita algoritmos basados en bits o índices (por ejemplo, si se implementase radix por bits). Implementado en `algorithms/metrics.c` y usado por las estrategias que operan sobre índices.
-
-2) Estrategia "simple" (función `simple` — `algorithms/simple.c`)
+ Estrategia "simple" (función `simple` — `algorithms/simple.c`)
 - Para: entradas pequeñas (n ≤ 5 típicamente).
 - Aplica soluciones óptimas para 2–3 elementos (`sort_three` / `sort_3_a`) y desplaza
   repetidamente el elemento más pequeño a la pila B hasta reducir a 3 elementos; ordena
@@ -143,7 +132,7 @@ Estrategias y por qué se eligieron (implementadas en `src/algorithms`):
 - Justificación: para entradas cortas, es trivial encontrar secuencias mínimas. Evita
   sobrecostes que introduciría una estrategia más genérica.
 
-3) Estrategia "medium" / chunking (función `medium` — `algorithms/medium.c`)
+ Estrategia "medium" / chunking (función `medium` — `algorithms/medium.c`)
 - Para: entradas medianas (por ejemplo, n ≤ ~100 y n > 5), con heurística de chunk size.
 - Convierte valores a índices (indices ya asignados por `assign_index`), luego
   mueve elementos en "chunks" desde A a B según su índice; al empujar a B, algunos se
@@ -153,7 +142,7 @@ Estrategias y por qué se eligieron (implementadas en `src/algorithms`):
 - Justificación: reduce la cantidad de rotaciones y búsquedas para valores dispersos, y
   suele producir buenos resultados en tests de 100 y 500 elementos.
 
-4) Estrategia "complex", quicksort recursivo (función `complex` — `algorithms/complex.c`)
+ Estrategia "complex", quicksort recursivo (función `complex` — `algorithms/complex.c`)
 - Para: entradas grandes o cuando la heurística (métrica de desorden) lo decide.
 - Cómo (implementación propia style quicksort-partition):
   - `quicksort_a` y `quicksort_b` hacen particionado por un pivote (mediana calculada sobre la sublista con `get_median` en `algorithms/complex_utils.c`).
