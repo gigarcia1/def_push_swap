@@ -1,4 +1,4 @@
-*Este proyecto ha sido creado como parte del currículo de 42 por gigarcia, rodde-fr.*
+*Este proyecto ha sido creado como parte del currículo de 42 por gigarcia.*
 
 # Push_Swap
 
